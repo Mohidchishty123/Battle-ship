@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css?family=Fascinate+Inline|Baloo+Bhaina");
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: #6FC3ED;
+	font-family: "Baloo Bhaina", sans-serif;
+}
+
+/* Make the board responsive */
+#board {
+	position: relative;
+	width: 90%;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+#messageArea {
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+	color: #f4f8ff;
+	font-family: "Fascinate Inline", cursive;
+	font-size: 4vw;
+}
+
+/* Make the table responsive */
+table {
+	border-collapse: separate;
+	border-spacing: 3px;
+	margin: 0 auto;
+	width: 100%;
+	max-width: 600px;
+}
+
+td {
+	position: relative;
+	width: 12vw;
+	height: 12vw;
+	max-width: 70px;
+	max-height: 70px;
+	border: 2px solid #152C59;
+	border-radius: 15px;
+}
+
+td:hover {
+	background: #538daa;
+}
+
+td div {
+	width: 100%;
+	height: 100%;
+}
+
+/* Adjust the size of the numbers and letters */
+.numbers, .letters {
+	text-align: center;
+	font-size: 3vw;
+	font-family: "Baloo Bhaina", sans-serif;
+	color: #f4f8ff;
+	height: 8vw;
+	width: 8vw;
+	border: none;
+}
+
+/* Responsive hit and miss animations */
+.hit {
+	position: absolute;
+	bottom: 5px;
+	left: 5px;
+	width: 80%;
+	height: 40%;
+	background: #851B15;
+	border-radius: 5px 5px 50px 35px;
+	animation: wave 1s ease-in-out infinite alternate;
+}
+
+@keyframes wave {
+	0% { transform: rotate(-7deg); }
+	100% { transform: rotate(5deg); }
+}
+
+.hit::after {
+	content: '';
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	width: 15%;
+	height: 15%;
+	background: #D2995F;
+	border-radius: 50%;
+	box-shadow: 2vw 0 #FCCE9E,
+	            4vw 0 #D2995F;
+}
+
+.hit::before {
+	content: '';
+	position: absolute;
+	bottom: 30%;
+	left: 10%;
+	width: 25%;
+	height: 50%;
+	background: #5A0400;
+	box-shadow: 15% 4% 0 -4% #AC3B35;
+}
+
+.miss {
+	width: 80%;
+	height: 10%;
+	position: absolute;
+	top: 40%;
+	left: 5%;
+	border-radius: 5px;
+	background: #47002B;
+	transform-origin: center center;
+	transform: rotate(45deg);
+	box-shadow: 3px 3px #C77DAA;
+	animation: blow 0.5s ease-in;
+}
+
+@keyframes blow {
+	0% { transform: scale(0); }
+	1% { transform: rotate(45deg); }
+	80% { transform: scale(1.7); }
+	100% { transform: scale(1); }
+}
+
+.miss::after {
+	content: '';
+	width: 80%;
+	height: 10%;
+	position: absolute;
+	border-radius: 5px;
+	background: #47002B;
+	transform: rotate(90deg);
+	box-shadow: 3px -3px #C77DAA;
+}
+
+/* Additional styles for smaller screens */
+@media (max-width: 768px) {
+	td {
+		width: 15vw;
+		height: 15vw;
+	}
+
+	.hit, .miss {
+		width: 70%;
+		height: 30%;
+	}
+}
+
+@media (max-width: 480px) {
+	td {
+		width: 20vw;
+		height: 20vw;
+	}
+
+	.hit, .miss {
+		width: 60%;
+		height: 20%;
+	}
+}
